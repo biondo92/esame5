@@ -1,9 +1,9 @@
-import { Account } from "./account";
-import { Address } from "./address";
-import { Contact } from "./contact";
+import Account from "./account";
+import Address from "./address";
+import Contact from "./contact";
 import { Gender } from "./enums";
 
-export interface User {
+export default interface User {
     id: Number;
     name: String;
     lastName: String;

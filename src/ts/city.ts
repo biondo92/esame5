@@ -1,6 +1,6 @@
-import { Country } from "./country";
+import Country from "./country";
 
-export interface City {
+export default interface City {
     id: number;
     name: string;
     countryId: number;

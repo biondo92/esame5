@@ -1,6 +1,6 @@
 import { ContactType } from "./enums";
 
-export interface Contact {
+export default interface Contact {
     id: number;
     userId: number;
     type: ContactType;

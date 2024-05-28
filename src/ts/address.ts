@@ -1,7 +1,7 @@
-import { City } from "./city";
+import City from "./city";
 import { AddressType } from "./enums";
 
-export interface Address {
+export default interface Address {
     id: Number;
     address: String;
     postalCode: String;
