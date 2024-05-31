@@ -3,7 +3,7 @@ import Address from "./address";
 import Contact from "./contact";
 import { Gender } from "./enums";
 
-export default interface User {
+export default class User {
     id: Number;
     name: String;
     lastName: String;
@@ -12,4 +12,11 @@ export default interface User {
     addresses: Address[];
     contacts: Contact[];
     account: Account;
+
+    constructor() {
+        this.name = "";
+        this.lastName = "";
+        this.birthDate = new Date();
+        this.gender = Gender.Other;
+    }
 }

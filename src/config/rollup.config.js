@@ -8,12 +8,12 @@ const banner = `/*!
 */`
 
 module.exports = {
-    input: 'src/ts/app.ts',
+    input: 'src/ts/index.ts',
     output: {
-        file: 'dist/js/app.js',
+        file: 'dist/js/index.js',
         format: 'umd',
         banner,
-        name: 'app'
+        name: 'App'
     },
     plugins: [
         typescript()
