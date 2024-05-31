@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="node_modules\bootstrap\dist\css\bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules\@fortawesome\fontawesome-free\css\all.css">
+    <style>
+        body {
+            background: url('dist/img/boxed-bg.jpg');
+        }
+
+        #register-box {
+            height: 80vh;
+            margin-top: 10%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="conteiner-fluid ">
+
+        <div class="row mt-3">
+            <div class="col text-center">
+                <h1>My Web Application</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 offset-md-3 offset-lg-4 ps-5 pe-5 ps-md-0 pe-md-0">
+
+                <div id="register-box" class="d-flex justify-content-center">
+
+                    <div class="card border-1 border-primary">
+
+                        <h5 class="card-header bg-primary text-white">
+                            Register
+                        </h5>
+
+                        <div class="card-body">
+                            <form id="register">
+
+                                <ul class="nav nav-tabs" id="tab-nav" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="account-tab" data-bs-toggle="tab"
+                                            data-bs-target="#account" type="button" role="tab" aria-controls="account"
+                                            aria-selected="true">Account</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="personal-data-tab" data-bs-toggle="tab"
+                                            data-bs-target="#personal-data" type="button" role="tab"
+                                            aria-controls="personal-data" aria-selected="false">Personal Data</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="addresses-tab" data-bs-toggle="tab"
+                                            data-bs-target="#addresses" type="button" role="tab"
+                                            aria-controls="addresses" aria-selected="false">Addresses</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="contacts-tab" data-bs-toggle="tab"
+                                            data-bs-target="#contacts" type="button" role="tab" aria-controls="contacts"
+                                            aria-selected="false">Contacts</button>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content" id="myTabContent">
+
+                                    <div class="tab-pane fade show active" id="account" role="tabpanel"
+                                        aria-labelledby="account-tab">
+                                        <hr class="mt-0">
+                                        <div class="row mb-3">
+                                            <h5>Account</h5>
+                                        </div>
+                                        <div id="email" class="row mb-3">
+                                            <label for="input-email" class="form-label ">Email</label>
+
+                                            <input type="email" class="form-control" id="input-email" name="email">
+
+                                        </div>
+                                        <div id="password" class="row mb-3">
+                                            <label for="input-password" class="form-label ">Password</label>
+
+                                            <input type="password" class="form-control" id="input-password"
+                                                name="password">
+
+                                        </div>
+                                        <div id="confirm-password" class="row mb-3">
+                                            <label for="input-confirm-password" class="form-label ">Confirm
+                                                Password</label>
+
+                                            <input type="password" class="form-control" id="input-confirm-password">
+
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="personal-data" role="tabpanel"
+                                        aria-labelledby="personal-data-tab">
+                                        <hr class="mt-0">
+                                        <div class="row mb-3">
+                                            <h5>Personal Data</h5>
+                                        </div>
+                                        <div id="name" class="row mb-3">
+                                            <label for="input-name" class="form-label">Name</label>
+                                            <input type="text" class="form-control" id="input-name" name="name">
+                                        </div>
+                                        <div id="last-name" class="row mb-3">
+                                            <label for="input-last-name" class="form-label">Last Name</label>
+                                            <input type="text" class="form-control" id="input-last-name"
+                                                name="lastName">
+                                        </div>
+                                        <div id="birthdate" class="row mb-3">
+                                            <label for="input-birthdate" class="form-label">Birthdate</label>
+                                            <input type="date" class="form-control" id="input-birthdate"
+                                                name="birthdate">
+                                        </div>
+                                        <div id="gender" class="row mb-3">
+                                            <label for="input-gender" class="form-label">Gender</label>
+                                            <select class="form-control" id="input-gender" name="gender">
+                                                <option value="">Choose...</option>
+                                                <option value="M">Male</option>
+                                                <option value="F">Female</option>
+                                                <option value="O">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="addresses" role="tabpanel"
+                                        aria-labelledby="addresses-tab">
+                                        <h5>Addresses Tab</h5>
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                    data-bs-target="#modal-address">
+                                                    <i class="fas fa-plus text-white"></i>
+                                                </button>
+
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped" id="Address-table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Type</th>
+                                                                <th>Address</th>
+                                                                <th>City</th>
+                                                                <th>Postal Code</th>
+                                                            </tr>
+
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="text-center" colspan="4">no records found
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+
+                                                    </table>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="contacts" role="tabpanel"
+                                        aria-labelledby="contacts-tab">
+                                        <h5>Contacts Tab</h5>
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                    data-bs-target="#modal-contact">
+                                                    <i class="fas fa-plus text-white"></i>
+                                                </button>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped" id="contact-table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="w-25">Type</th>
+                                                                <th class="w-75">Value</th>
+
+                                                            </tr>
+
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <!-- <td class="text-center" colspan="4">no records found
+                                                                </td> -->
+                                                                <td>Telephone</td>
+                                                                <td>0761579203</td>
+                                                            </tr>
+                                                        </tbody>
+
+                                                    </table>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="modal-address" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Address Form</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <form id="address-form">
+                        <div id="address" class="row mb-3">
+                            <label for="input-address" class="form-label ">Address</label>
+
+                            <input type="text" class="form-control" id="input-address" name="address">
+
+                        </div>
+                        <div id="postalCode" class="row mb-3">
+                            <label for="input-postalCode" class="form-label ">Postal Code</label>
+
+                            <input type="text" class="form-control" id="input-postalCode" name="postaCode">
+
+                        </div>
+                        <div id="type" class="row mb-3">
+                            <label for="input-tipy" class="form-label ">Type</label>
+
+                            <select class="form-control" id="input-type" name="type">
+                                <option value="">Choose...</option>
+                                <option value="0">Residential</option>
+                                <option value="1">Domicile</option>
+                            </select>
+
+                        </div>
+                        <div id="city" class="row mb-3">
+                            <label for="input-city" class="form-label ">City</label>
+
+                            <select class="form-control" id="input-city" name="cityId">
+                                <option value="">Choose...</option>
+                            </select>
+
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-contact" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Contact Form</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="contact-form">
+
+                        <div id="value" class="row mb-3">
+                            <label for="input-value" class="form-label ">Value</label>
+
+                            <input type="text" class="form-control" id="input-value" name="value">
+
+                        </div>
+                        <div id="type" class="row mb-3">
+                            <label for="input-tipy" class="form-label ">Type</label>
+
+                            <select class="form-control" id="input-type" name="type">
+                                <option value="">Choose...</option>
+                                <option value="0">Email</option>
+                                <option value="1">Telephone</option>
+                                <option value="2">Mobile</option>
+                                <option value="3">Fax</option>
+                            </select>
+
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="node_modules\jquery\dist\jquery.min.js"></script>
+    <script src="node_modules\bootstrap\dist\js\bootstrap.bundle.min.js"></script>
+    <script src="dist/js/index.js"></script>
+    <script>
+        $(document).ready(() => {
+            console.log(window);
+            // console.log(app);
+            // console.log(window.app.User);
+            // var user = new window.app.User.User("manuel", "admin", new Date(1993, 10, 23));
+            var form = new window.App.RegisterForm("#register");
+            console.log(form);
+        })
+    </script>
+</body>
+
+</html>
