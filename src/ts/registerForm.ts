@@ -14,7 +14,7 @@ export class RegisterForm {
     /**
     *
     */
-    constructor(selector: string = "form", validators:any = {}) {
+    constructor(selector: string = "form", validators: any = {}) {
         let el = $(selector);
         let tabs = el.find(".nav-link");
         let fields = el.find(".form-control");
@@ -30,21 +30,21 @@ export class RegisterForm {
             var name = elem.attributes["name"].nodeValue;
             var callback = validators[name];
 
-            if(callback == null || callback == undefined){
+            if (callback == null || callback == undefined) {
                 console.log("no validation callback supplied for '" + name + "'...");
             }
-            else{
+            else {
                 elem.onblur = (e) => {
                     var target = $(e.target);
 
                     var result = callback(target.val());
 
-                    if(result.isValid){
+                    if (result.isValid) {
                         target.removeClass("is-invalid").addClass("is-valid");
                         target.parent().find(".form-text").html("");
                     }
-                    else{
-                        target.removeClass("is-ialid").addClass("is-invalid");
+                    else {
+                        target.removeClass("is-valid").addClass("is-invalid");
                         target.parent().find(".form-text").html(result.message);
                     }
                 };

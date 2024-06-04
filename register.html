@@ -46,17 +46,17 @@
                                             aria-selected="true">Account</button>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link disabled" id="personal-data-tab" data-bs-toggle="tab"
+                                        <button class="nav-link " id="personal-data-tab" data-bs-toggle="tab"
                                             data-bs-target="#personal-data" type="button" role="tab"
                                             aria-controls="personal-data" aria-selected="false">Personal Data</button>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link disabled" id="addresses-tab" data-bs-toggle="tab"
+                                        <button class="nav-link " id="addresses-tab" data-bs-toggle="tab"
                                             data-bs-target="#addresses" type="button" role="tab"
                                             aria-controls="addresses" aria-selected="false">Addresses</button>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link disabled" id="contacts-tab" data-bs-toggle="tab"
+                                        <button class="nav-link " id="contacts-tab" data-bs-toggle="tab"
                                             data-bs-target="#contacts" type="button" role="tab" aria-controls="contacts"
                                             aria-selected="false">Contacts</button>
                                     </li>
@@ -80,13 +80,15 @@
 
                                             <input type="password" class="form-control" id="input-password"
                                                 name="password">
-                                                <div class="form-text text-danger"></div>
+                                            <div class="form-text text-danger"></div>
                                         </div>
                                         <div id="confirm-password" class="row mb-3">
                                             <label for="input-confirm-password" class="form-label ">Confirm
                                                 Password</label>
 
-                                            <input type="password" class="form-control" name="confirm-password" id="input-confirm-password">
+                                            <input type="password" class="form-control" name="confirm-password"
+                                                id="input-confirm-password">
+                                            <div class="form-text text-danger"></div>
 
                                         </div>
                                     </div>
@@ -100,16 +102,19 @@
                                         <div id="name" class="row mb-3">
                                             <label for="input-name" class="form-label">Name</label>
                                             <input type="text" class="form-control" id="input-name" name="name">
+                                            <div class="form-text text-danger"></div>
                                         </div>
                                         <div id="last-name" class="row mb-3">
                                             <label for="input-last-name" class="form-label">Last Name</label>
                                             <input type="text" class="form-control" id="input-last-name"
                                                 name="lastName">
+                                            <div class="form-text text-danger"></div>
                                         </div>
                                         <div id="birthdate" class="row mb-3">
                                             <label for="input-birthdate" class="form-label">Birthdate</label>
                                             <input type="date" class="form-control" id="input-birthdate"
                                                 name="birthdate">
+                                            <div class="form-text text-danger"></div>
                                         </div>
                                         <div id="gender" class="row mb-3">
                                             <label for="input-gender" class="form-label">Gender</label>
@@ -119,6 +124,7 @@
                                                 <option value="F">Female</option>
                                                 <option value="O">Other</option>
                                             </select>
+                                            <div class="form-text text-danger"></div>
                                         </div>
                                     </div>
 
@@ -230,12 +236,14 @@
                             <label for="input-address" class="form-label ">Address</label>
 
                             <input type="text" class="form-control" id="input-address" name="address">
+                            <div class="form-text text-danger"></div>
 
                         </div>
                         <div id="postalCode" class="row mb-3">
                             <label for="input-postalCode" class="form-label ">Postal Code</label>
 
                             <input type="text" class="form-control" id="input-postalCode" name="postaCode">
+                            <div class="form-text text-danger"></div>
 
                         </div>
                         <div id="type" class="row mb-3">
@@ -246,12 +254,14 @@
                                 <option value="0">Residential</option>
                                 <option value="1">Domicile</option>
                             </select>
+                            <div class="form-text text-danger"></div>
 
                         </div>
                         <div id="city" class="row mb-3">
                             <label for="input-city" class="form-label ">City</label>
 
                             <input type="text" class="form-control" id="input-city" name="city">
+                            <div class="form-text text-danger"></div>
 
                         </div>
                     </form>
@@ -278,6 +288,7 @@
                             <label for="input-value" class="form-label ">Value</label>
 
                             <input type="text" class="form-control" id="input-value" name="value">
+                            <div class="form-text text-danger"></div>
 
                         </div>
                         <div id="type" class="row mb-3">
@@ -290,6 +301,7 @@
                                 <option value="2">Mobile</option>
                                 <option value="3">Fax</option>
                             </select>
+                            <div class="form-text text-danger"></div>
 
                         </div>
 
@@ -308,20 +320,72 @@
     <script src="dist/js/index.js"></script>
     <script>
         $(document).ready(() => {
-            var form = new window.App.RegisterForm("#register", 
-            { 
-                "email": (val) => { 
-                    // controlla che il campo è settato
-                    if(val.length <= 0){
-                        return new window.App.ValidationResult(false, "Il campo 'Email' obbligatorio");
+            var form = new window.App.RegisterForm("#register",
+                {
+                    "email": (val) => {
+                        // controlla che il campo è settato
+                        if (val.length <= 0) {
+                            return new window.App.ValidationResult(false, "Il campo 'Email' obbligatorio");
+                        }
+
+                        // conrollo la validità dell indirizzo Email
+                        var re = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+                        var res = re.test(val);
+                        if (!res) {
+                            return new window.App.ValidationResult(false, "indirizzo email non valido");
+                        }
+
+                        return new window.App.ValidationResult(true)
+                    },
+
+                    "password": (val) => {
+                        if (!(val.length >= 8)) {
+                            return new window.App.ValidationResult(false, "Il campo 'Password' deve essere di almeno 8 caratteri");
+                        }
+                        var reMaus = /(.*[A-Z].*)/;
+                        var reMinus = /(.*[a-z].*)/;
+                        var reNum = /(.*\d.*)/;
+                        var reCspecial = /(.*\W.*)/;
+                        if (!reMaus.test(val)) {
+                            return new window.App.ValidationResult(false, "il campo 'Password' deve contenere almeno una lettera maiuscola ");
+                        }
+                        if (!reMinus.test(val)) {
+                            return new window.App.ValidationResult(false, "il campo 'Password' deve contenere almeno una lettera minuscola ");
+                        }
+                        if (!reNum.test(val)) {
+                            return new window.App.ValidationResult(false, "il campo 'Password' deve contenere almeno un numero ");
+                        }
+                        if (!reCspecial.test(val)) {
+                            return new window.App.ValidationResult(false, "il campo 'Password' deve contenere almeno un carattere speciale ");
+                        }
+                        return new window.App.ValidationResult(true)
+                    },
+                    "confirm-password": (val) => {
+                        if (!(val.length >= 8)) {
+                            return new window.App.ValidationResult(false, "Il campo 'Conferma Password' deve essere di almeno 8 caratteri");
+                        }
+                        var pass = $("#input-password").val();
+                        if (!(val === pass)) {
+                            return new window.App.ValidationResult(false, "I campi 'Password' e  'Conferma Password' devono coincidere");
+                        }
+                        return new window.App.ValidationResult(true)
+                    },
+
+                    "name": (val) => {
+                        if (val.length <= 0) {
+                            return new window.App.ValidationResult(false, "Il campo 'Name' è obbligatorio");
+                        }
+                        return new window.App.ValidationResult(true)
+                    },
+                    "lastName": (val) => {
+                        if (val.length <= 0) {
+                            return new window.App.ValidationResult(false, "Il campo 'lastName' è obbligatorio");
+                        }
+                        return new window.App.ValidationResult(true)
                     }
 
-                    return new window.App.ValidationResult(true)
-                },
-                "password": (val) => {
-                    return new window.App.ValidationResult(false, "La Password è obbligatoria")
-                }
-            });
+
+                });
         })
     </script>
 </body>
