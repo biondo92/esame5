@@ -9,11 +9,15 @@ const banner = `/*!
 
 module.exports = {
     input: 'src/ts/index.ts',
+    external: ['bootstrap'],
     output: {
         file: 'dist/js/index.js',
         format: 'umd',
         banner,
-        name: 'App'
+        name: 'App',
+        globals: {
+            bootstrap: 'bootstrap'
+        }
     },
     plugins: [
         typescript()

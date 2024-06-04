@@ -1,11 +1,10 @@
-import City from "./city";
 import { AddressType } from "./enums";
+
 export default class Address {
     id: Number;
     address: String;
     postalCode: String;
-    cityId: number;
-    city: City;
+    city: string;
     type: AddressType;
     userId: number;
 
@@ -15,7 +14,7 @@ export default class Address {
     constructor() {
         this.address = "";
         this.postalCode = "";
-        this.cityId = 0;
+        this.city = "";
         this.type = AddressType.Residential;
     }
 }

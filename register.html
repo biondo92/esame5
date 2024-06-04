@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="node_modules\@fortawesome\fontawesome-free\css\all.css">
     <style>
         body {
-            background: url('dist/img/boxed-bg.jpg');
+            background: url('img/boxed-bg.jpg');
         }
 
         #register-box {
@@ -46,17 +46,17 @@
                                             aria-selected="true">Account</button>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link" id="personal-data-tab" data-bs-toggle="tab"
+                                        <button class="nav-link disabled" id="personal-data-tab" data-bs-toggle="tab"
                                             data-bs-target="#personal-data" type="button" role="tab"
                                             aria-controls="personal-data" aria-selected="false">Personal Data</button>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link" id="addresses-tab" data-bs-toggle="tab"
+                                        <button class="nav-link disabled" id="addresses-tab" data-bs-toggle="tab"
                                             data-bs-target="#addresses" type="button" role="tab"
                                             aria-controls="addresses" aria-selected="false">Addresses</button>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link" id="contacts-tab" data-bs-toggle="tab"
+                                        <button class="nav-link disabled" id="contacts-tab" data-bs-toggle="tab"
                                             data-bs-target="#contacts" type="button" role="tab" aria-controls="contacts"
                                             aria-selected="false">Contacts</button>
                                     </li>
@@ -72,22 +72,21 @@
                                         </div>
                                         <div id="email" class="row mb-3">
                                             <label for="input-email" class="form-label ">Email</label>
-
                                             <input type="email" class="form-control" id="input-email" name="email">
-
+                                            <div class="form-text text-danger"></div>
                                         </div>
                                         <div id="password" class="row mb-3">
                                             <label for="input-password" class="form-label ">Password</label>
 
                                             <input type="password" class="form-control" id="input-password"
                                                 name="password">
-
+                                                <div class="form-text text-danger"></div>
                                         </div>
                                         <div id="confirm-password" class="row mb-3">
                                             <label for="input-confirm-password" class="form-label ">Confirm
                                                 Password</label>
 
-                                            <input type="password" class="form-control" id="input-confirm-password">
+                                            <input type="password" class="form-control" name="confirm-password" id="input-confirm-password">
 
                                         </div>
                                     </div>
@@ -216,6 +215,7 @@
             </div>
         </div>
     </div>
+
     <div id="modal-address" class="modal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -251,9 +251,7 @@
                         <div id="city" class="row mb-3">
                             <label for="input-city" class="form-label ">City</label>
 
-                            <select class="form-control" id="input-city" name="cityId">
-                                <option value="">Choose...</option>
-                            </select>
+                            <input type="text" class="form-control" id="input-city" name="city">
 
                         </div>
                     </form>
@@ -310,12 +308,20 @@
     <script src="dist/js/index.js"></script>
     <script>
         $(document).ready(() => {
-            console.log(window);
-            // console.log(app);
-            // console.log(window.app.User);
-            // var user = new window.app.User.User("manuel", "admin", new Date(1993, 10, 23));
-            var form = new window.App.RegisterForm("#register");
-            console.log(form);
+            var form = new window.App.RegisterForm("#register", 
+            { 
+                "email": (val) => { 
+                    // controlla che il campo è settato
+                    if(val.length <= 0){
+                        return new window.App.ValidationResult(false, "Il campo 'Email' obbligatorio");
+                    }
+
+                    return new window.App.ValidationResult(true)
+                },
+                "password": (val) => {
+                    return new window.App.ValidationResult(false, "La Password è obbligatoria")
+                }
+            });
         })
     </script>
 </body>

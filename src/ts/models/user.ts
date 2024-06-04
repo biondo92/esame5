@@ -14,9 +14,6 @@ export default class User {
     account: Account;
 
     constructor() {
-        this.name = "";
-        this.lastName = "";
-        this.birthDate = new Date();
-        this.gender = Gender.Other;
+        
     }
 }

@@ -18,6 +18,7 @@
   "homepage": "https://github.com/biondo92/esame5#readme",
   "description": "",
   "devDependencies": {
+    "@types/bootstrap": "^5.2.10",
     "@types/jquery": "^3.5.30",
     "bootstrap": "^5.3.3",
     "jquery": "^3.7.1",
