@@ -5,10 +5,21 @@ import Contact from './models/contact';
 // import Country from './models/country';
 import * as Enums from './models/enums';
 import User from './models/user';
-import { RegisterForm }  from './registerForm';
+import { Register }  from './forms';
 import { ValidationResult } from './models/validationResult'
+import PersonalData from './models/personalData';
+
+var Models = {
+    Account,
+    PersonalData,
+    Address,
+    Contact,
+    User,
+    ValidationResult,
+    Enums
+};
 
 export {
-    RegisterForm,
-    ValidationResult
+    Register,
+    Models
 }

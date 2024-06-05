@@ -10,7 +10,7 @@
         }
 
         #register-box {
-            height: 80vh;
+            /* height: 70vh; */
             margin-top: 10%;
         }
     </style>
@@ -37,114 +37,124 @@
                         </h5>
 
                         <div class="card-body">
-                            <form id="register">
+                            <div id="user-frm">
 
                                 <ul class="nav nav-tabs" id="tab-nav" role="tablist">
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link active" id="account-tab" data-bs-toggle="tab"
-                                            data-bs-target="#account" type="button" role="tab" aria-controls="account"
+                                        <button class="nav-link active" id="account-tab-trigger" data-bs-toggle="tab"
+                                            data-bs-target="#account-tab" type="button" role="tab" aria-controls="account-tab"
                                             aria-selected="true">Account</button>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link " id="personal-data-tab" data-bs-toggle="tab"
-                                            data-bs-target="#personal-data" type="button" role="tab"
-                                            aria-controls="personal-data" aria-selected="false">Personal Data</button>
+                                        <button class="nav-link disabled" id="personalData-tab-trigger" data-bs-toggle="tab"
+                                            data-bs-target="#personalData-tab" type="button" role="tab"
+                                            aria-controls="personalData-tab" aria-selected="false" data-require="account">Personal Data</button>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link " id="addresses-tab" data-bs-toggle="tab"
-                                            data-bs-target="#addresses" type="button" role="tab"
-                                            aria-controls="addresses" aria-selected="false">Addresses</button>
+                                        <button class="nav-link disabled" id="addresses-tab-trigger" data-bs-toggle="tab"
+                                            data-bs-target="#addresses-tab" type="button" role="tab"
+                                            aria-controls="addresses-tab" aria-selected="false" data-require="personalData">Addresses</button>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link " id="contacts-tab" data-bs-toggle="tab"
-                                            data-bs-target="#contacts" type="button" role="tab" aria-controls="contacts"
-                                            aria-selected="false">Contacts</button>
+                                        <button class="nav-link disabled" id="contacts-tab-trigger" data-bs-toggle="tab"
+                                            data-bs-target="#contacts-tab" type="button" role="tab" aria-controls="contacts-tab"
+                                            aria-selected="false" data-require="personalData">Contacts</button>
                                     </li>
                                 </ul>
 
                                 <div class="tab-content" id="myTabContent">
 
-                                    <div class="tab-pane fade show active" id="account" role="tabpanel"
-                                        aria-labelledby="account-tab">
+                                    <div class="tab-pane fade show active" id="account-tab" role="tabpanel" aria-labelledby="account-tab-trigger">
                                         <hr class="mt-0">
+
                                         <div class="row mb-3">
                                             <h5>Account</h5>
                                         </div>
-                                        <div id="email" class="row mb-3">
-                                            <label for="input-email" class="form-label ">Email</label>
-                                            <input type="email" class="form-control" id="input-email" name="email">
-                                            <div class="form-text text-danger"></div>
-                                        </div>
-                                        <div id="password" class="row mb-3">
-                                            <label for="input-password" class="form-label ">Password</label>
 
-                                            <input type="password" class="form-control" id="input-password"
-                                                name="password">
-                                            <div class="form-text text-danger"></div>
-                                        </div>
-                                        <div id="confirm-password" class="row mb-3">
-                                            <label for="input-confirm-password" class="form-label ">Confirm
-                                                Password</label>
-
-                                            <input type="password" class="form-control" name="confirm-password"
-                                                id="input-confirm-password">
-                                            <div class="form-text text-danger"></div>
-
-                                        </div>
+                                        <form id="account">
+                                            <div id="email" class="row mb-3">
+                                                <label for="input-email" class="form-label ">Email</label>
+                                                <input type="email" class="form-control" id="input-email" name="email">
+                                                <div class="form-text text-danger"></div>
+                                            </div>
+                                            <div id="password" class="row mb-3">
+                                                <label for="input-password" class="form-label ">Password</label>
+                                                <input type="password" class="form-control" id="input-password" name="password">
+                                                <div class="form-text text-danger"></div>
+                                            </div>
+                                            <div id="confirm-password" class="row mb-3">
+                                                <label for="input-confirm-password" class="form-label ">Confirm Password</label>
+                                                <input type="password" class="form-control" name="confirm-password" id="input-confirm-password">
+                                                <div class="form-text text-danger"></div>
+                                            </div>
+    
+                                            <div id="" class="row mb-3">
+                                                <button type="button" class="btn btn-primary next disabled col-2 ms-auto" data-next="personalData"><i class="fas fa-2x fa-arrow-circle-right"></i></button>
+                                            </div>
+                                        </form>
                                     </div>
 
-                                    <div class="tab-pane fade" id="personal-data" role="tabpanel"
-                                        aria-labelledby="personal-data-tab">
+                                    <div class="tab-pane fade" id="personalData-tab" role="tabpanel" aria-labelledby="personalData-tab-trigger">
                                         <hr class="mt-0">
+
                                         <div class="row mb-3">
                                             <h5>Personal Data</h5>
                                         </div>
-                                        <div id="name" class="row mb-3">
-                                            <label for="input-name" class="form-label">Name</label>
-                                            <input type="text" class="form-control" id="input-name" name="name">
-                                            <div class="form-text text-danger"></div>
-                                        </div>
-                                        <div id="last-name" class="row mb-3">
-                                            <label for="input-last-name" class="form-label">Last Name</label>
-                                            <input type="text" class="form-control" id="input-last-name"
-                                                name="lastName">
-                                            <div class="form-text text-danger"></div>
-                                        </div>
-                                        <div id="birthdate" class="row mb-3">
-                                            <label for="input-birthdate" class="form-label">Birthdate</label>
-                                            <input type="date" class="form-control" id="input-birthdate"
-                                                name="birthdate">
-                                            <div class="form-text text-danger"></div>
-                                        </div>
-                                        <div id="gender" class="row mb-3">
-                                            <label for="input-gender" class="form-label">Gender</label>
-                                            <select class="form-control" id="input-gender" name="gender">
-                                                <option value="">Choose...</option>
-                                                <option value="M">Male</option>
-                                                <option value="F">Female</option>
-                                                <option value="O">Other</option>
-                                            </select>
-                                            <div class="form-text text-danger"></div>
-                                        </div>
+                                        
+                                        <form id="personalData">
+                                            <div id="name" class="row mb-3">
+                                                <label for="input-name" class="form-label">Name</label>
+                                                <input type="text" class="form-control" id="input-name" name="name">
+                                                <div class="form-text text-danger"></div>
+                                            </div>
+                                            <div id="last-name" class="row mb-3">
+                                                <label for="input-last-name" class="form-label">Last Name</label>
+                                                <input type="text" class="form-control" id="input-last-name" name="lastName">
+                                                <div class="form-text text-danger"></div>
+                                            </div>
+                                            <div id="birthdate" class="row mb-3">
+                                                <label for="input-birthdate" class="form-label">Birthdate</label>
+                                                <input type="date" class="form-control" id="input-birthdate"name="birthdate">
+                                                <div class="form-text text-danger"></div>
+                                            </div>
+                                            <div id="gender" class="row mb-3">
+                                                <label for="input-gender" class="form-label">Gender</label>
+                                                <select class="form-control" id="input-gender" name="gender">
+                                                    <option value="">Choose...</option>
+                                                    <option value="M">Male</option>
+                                                    <option value="F">Female</option>
+                                                    <option value="O">Other</option>
+                                                </select>
+                                                <div class="form-text text-danger"></div>
+                                            </div>
+    
+                                            <div id="" class="row mb-3">
+                                                <button type="button" class="btn btn-primary prev col-2 me-auto" data-prev="account"><i class="fas fa-2x fa-arrow-circle-left"></i></button>
+                                                <button type="button" class="btn btn-primary next disabled col-2 ms-auto" data-next="addresses"><i class="fas fa-2x fa-arrow-circle-right"></i></button>
+                                            </div>
+                                        </form>
                                     </div>
 
-                                    <div class="tab-pane fade" id="addresses" role="tabpanel"
-                                        aria-labelledby="addresses-tab">
-                                        <h5>Addresses Tab</h5>
+                                    <div class="tab-pane fade" id="addresses-tab" role="tabpanel" aria-labelledby="addresses-tab-trigger">
+                                        <hr class="mt-0">
+
+                                        <div class="row mb-3">
+                                            <h5>Addresses</h5>
+                                        </div>
 
                                         <div class="row">
                                             <div class="col">
-                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                                    data-bs-target="#modal-address">
-                                                    <i class="fas fa-plus text-white"></i>
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-address">
+                                                    <i class="fas fa-2x fa-plus text-white"></i>
                                                 </button>
 
                                             </div>
                                         </div>
+
                                         <div class="row mb-3">
                                             <div class="col">
                                                 <div class="table-responsive">
-                                                    <table class="table table-striped" id="Address-table">
+                                                    <table class="table table-striped" id="addresses-table">
                                                         <thead>
                                                             <tr>
                                                                 <th>Type</th>
@@ -166,48 +176,150 @@
 
                                             </div>
                                         </div>
+
+                                        <div id="" class="row mb-3">
+                                            <button type="button" class="btn btn-primary prev col-2 me-auto" data-prev="personalData"><i class="fas fa-2x fa-arrow-circle-left"></i></button>
+                                            <button type="button" class="btn btn-primary next col-2 ms-auto" data-next="contacts"><i class="fas fa-2x fa-arrow-circle-right"></i></button>
+                                        </div>
+
+                                        <div id="modal-address" class="modal" tabindex="-1">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Address Form</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                    
+                                                        <form id="addresses">
+                                                            <div id="address" class="row mb-3">
+                                                                <label for="input-address" class="form-label ">Address</label>
+                                    
+                                                                <input type="text" class="form-control" id="input-address" name="address">
+                                                                <div class="form-text text-danger"></div>
+                                    
+                                                            </div>
+                                                            <div id="postalCode" class="row mb-3">
+                                                                <label for="input-postalCode" class="form-label ">Postal Code</label>
+                                    
+                                                                <input type="text" class="form-control" id="input-postalCode" name="postalCode">
+                                                                <div class="form-text text-danger"></div>
+                                    
+                                                            </div>
+                                                            <div id="type" class="row mb-3">
+                                                                <label for="input-tipy" class="form-label ">Type</label>
+                                    
+                                                                <select class="form-control" id="input-type" name="type">
+                                                                    <option value="">Choose...</option>
+                                                                    <option value="0">Residential</option>
+                                                                    <option value="1">Domicile</option>
+                                                                </select>
+                                                                <div class="form-text text-danger"></div>
+                                    
+                                                            </div>
+                                                            <div id="city" class="row mb-3">
+                                                                <label for="input-city" class="form-label ">City</label>
+                                    
+                                                                <input type="text" class="form-control" id="input-city" name="city">
+                                                                <div class="form-text text-danger"></div>
+                                    
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn btn-success add-data" data-form="addresses">Add</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
 
-                                    <div class="tab-pane fade" id="contacts" role="tabpanel"
-                                        aria-labelledby="contacts-tab">
-                                        <h5>Contacts Tab</h5>
+                                    <div class="tab-pane fade" id="contacts-tab" role="tabpanel" aria-labelledby="contacts-tab-trigger">
+                                        <hr class="mt-0">
+
+                                        <div class="row mb-3">
+                                            <h5>Contacts</h5>
+                                        </div>
 
                                         <div class="row">
                                             <div class="col">
-                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                                    data-bs-target="#modal-contact">
-                                                    <i class="fas fa-plus text-white"></i>
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-contact">
+                                                    <i class="fas fa-2x fa-plus text-white"></i>
                                                 </button>
-
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
                                             <div class="col">
                                                 <div class="table-responsive">
-                                                    <table class="table table-striped" id="contact-table">
+                                                    <table class="table table-striped" id="contacts-table">
                                                         <thead>
                                                             <tr>
                                                                 <th class="w-25">Type</th>
                                                                 <th class="w-75">Value</th>
 
                                                             </tr>
-
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <!-- <td class="text-center" colspan="4">no records found
-                                                                </td> -->
-                                                                <td>Telephone</td>
-                                                                <td>0761579203</td>
+                                                                <td class="text-center" colspan="4">no records found
+                                                                </td>
                                                             </tr>
                                                         </tbody>
-
                                                     </table>
                                                 </div>
 
                                             </div>
                                         </div>
+
+                                        <div id="" class="row mb-3">
+                                            <button type="button" class="btn btn-primary prev col-2 me-auto" data-prev="addresses"><i class="fas fa-2x fa-arrow-circle-left"></i></button>
+                                            <button type="button" class="btn btn-success submit col-2 ms-auto"><i class="fas fa-2x fa-save"></i></button>
+                                        </div>
+
+                                        <div id="modal-contact" class="modal" tabindex="-1">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Contact Form</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form id="contacts">
+                                    
+                                                            <div id="value" class="row mb-3">
+                                                                <label for="input-value" class="form-label ">Value</label>
+                                    
+                                                                <input type="text" class="form-control" id="input-value" name="value">
+                                                                <div class="form-text text-danger"></div>
+                                    
+                                                            </div>
+                                                            <div id="type" class="row mb-3">
+                                                                <label for="input-tipy" class="form-label ">Type</label>
+                                    
+                                                                <select class="form-control" id="input-type" name="type">
+                                                                    <option value="">Choose...</option>
+                                                                    <option value="0">Email</option>
+                                                                    <option value="1">Telephone</option>
+                                                                    <option value="2">Mobile</option>
+                                                                    <option value="3">Fax</option>
+                                                                </select>
+                                                                <div class="form-text text-danger"></div>
+                                    
+                                                            </div>
+                                    
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn btn-success add-data" data-form="contacts">Add</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
 
                                 </div>
@@ -222,171 +334,90 @@
         </div>
     </div>
 
-    <div id="modal-address" class="modal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Address Form</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-
-                    <form id="address-form">
-                        <div id="address" class="row mb-3">
-                            <label for="input-address" class="form-label ">Address</label>
-
-                            <input type="text" class="form-control" id="input-address" name="address">
-                            <div class="form-text text-danger"></div>
-
-                        </div>
-                        <div id="postalCode" class="row mb-3">
-                            <label for="input-postalCode" class="form-label ">Postal Code</label>
-
-                            <input type="text" class="form-control" id="input-postalCode" name="postaCode">
-                            <div class="form-text text-danger"></div>
-
-                        </div>
-                        <div id="type" class="row mb-3">
-                            <label for="input-tipy" class="form-label ">Type</label>
-
-                            <select class="form-control" id="input-type" name="type">
-                                <option value="">Choose...</option>
-                                <option value="0">Residential</option>
-                                <option value="1">Domicile</option>
-                            </select>
-                            <div class="form-text text-danger"></div>
-
-                        </div>
-                        <div id="city" class="row mb-3">
-                            <label for="input-city" class="form-label ">City</label>
-
-                            <input type="text" class="form-control" id="input-city" name="city">
-                            <div class="form-text text-danger"></div>
-
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal-contact" class="modal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Contact Form</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="contact-form">
-
-                        <div id="value" class="row mb-3">
-                            <label for="input-value" class="form-label ">Value</label>
-
-                            <input type="text" class="form-control" id="input-value" name="value">
-                            <div class="form-text text-danger"></div>
-
-                        </div>
-                        <div id="type" class="row mb-3">
-                            <label for="input-tipy" class="form-label ">Type</label>
-
-                            <select class="form-control" id="input-type" name="type">
-                                <option value="">Choose...</option>
-                                <option value="0">Email</option>
-                                <option value="1">Telephone</option>
-                                <option value="2">Mobile</option>
-                                <option value="3">Fax</option>
-                            </select>
-                            <div class="form-text text-danger"></div>
-
-                        </div>
-
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script src="node_modules\jquery\dist\jquery.min.js"></script>
     <script src="node_modules\bootstrap\dist\js\bootstrap.bundle.min.js"></script>
     <script src="dist/js/index.js"></script>
     <script>
+        // quando la pagina è completamente caricata
         $(document).ready(() => {
-            var form = new window.App.RegisterForm("#register",
-                {
+
+            // creo un'istanza dell'oggetto 'Register' che è l'handler che contiene la logica della registrazione dell'utente
+            var form = new window.App.Register("#user-frm", {
+                account: {
                     "email": (val) => {
                         // controlla che il campo è settato
                         if (val.length <= 0) {
-                            return new window.App.ValidationResult(false, "Il campo 'Email' obbligatorio");
+                            return new window.App.Models.ValidationResult(false, "Il campo 'Email' obbligatorio");
                         }
 
                         // conrollo la validità dell indirizzo Email
                         var re = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
                         var res = re.test(val);
                         if (!res) {
-                            return new window.App.ValidationResult(false, "indirizzo email non valido");
+                            return new window.App.Models.ValidationResult(false, "indirizzo email non valido");
                         }
 
-                        return new window.App.ValidationResult(true)
+                        return new window.App.Models.ValidationResult(true)
                     },
-
                     "password": (val) => {
                         if (!(val.length >= 8)) {
-                            return new window.App.ValidationResult(false, "Il campo 'Password' deve essere di almeno 8 caratteri");
+                            return new window.App.Models.ValidationResult(false, "Il campo 'Password' deve essere di almeno 8 caratteri");
                         }
                         var reMaus = /(.*[A-Z].*)/;
                         var reMinus = /(.*[a-z].*)/;
                         var reNum = /(.*\d.*)/;
                         var reCspecial = /(.*\W.*)/;
                         if (!reMaus.test(val)) {
-                            return new window.App.ValidationResult(false, "il campo 'Password' deve contenere almeno una lettera maiuscola ");
+                            return new window.App.Models.ValidationResult(false, "il campo 'Password' deve contenere almeno una lettera maiuscola ");
                         }
                         if (!reMinus.test(val)) {
                             return new window.App.ValidationResult(false, "il campo 'Password' deve contenere almeno una lettera minuscola ");
                         }
                         if (!reNum.test(val)) {
-                            return new window.App.ValidationResult(false, "il campo 'Password' deve contenere almeno un numero ");
+                            return new window.App.Models.ValidationResult(false, "il campo 'Password' deve contenere almeno un numero ");
                         }
                         if (!reCspecial.test(val)) {
-                            return new window.App.ValidationResult(false, "il campo 'Password' deve contenere almeno un carattere speciale ");
+                            return new window.App.Models.ValidationResult(false, "il campo 'Password' deve contenere almeno un carattere speciale ");
                         }
-                        return new window.App.ValidationResult(true)
+                        return new window.App.Models.ValidationResult(true)
                     },
                     "confirm-password": (val) => {
                         if (!(val.length >= 8)) {
-                            return new window.App.ValidationResult(false, "Il campo 'Conferma Password' deve essere di almeno 8 caratteri");
+                            return new window.App.Models.ValidationResult(false, "Il campo 'Conferma Password' deve essere di almeno 8 caratteri");
                         }
                         var pass = $("#input-password").val();
                         if (!(val === pass)) {
-                            return new window.App.ValidationResult(false, "I campi 'Password' e  'Conferma Password' devono coincidere");
+                            return new window.App.Models.ValidationResult(false, "I campi 'Password' e  'Conferma Password' devono coincidere");
                         }
-                        return new window.App.ValidationResult(true)
+                        return new window.App.Models.ValidationResult(true)
                     },
-
+                },
+                personalData: {
                     "name": (val) => {
                         if (val.length <= 0) {
-                            return new window.App.ValidationResult(false, "Il campo 'Name' è obbligatorio");
+                            return new window.App.Models.ValidationResult(false, "Il campo 'Name' è obbligatorio");
                         }
-                        return new window.App.ValidationResult(true)
+                        return new window.App.Models.ValidationResult(true)
                     },
                     "lastName": (val) => {
                         if (val.length <= 0) {
-                            return new window.App.ValidationResult(false, "Il campo 'lastName' è obbligatorio");
+                            return new window.App.Models.ValidationResult(false, "Il campo 'lastName' è obbligatorio");
                         }
-                        return new window.App.ValidationResult(true)
+                        return new window.App.Models.ValidationResult(true)
                     }
+                }
+            });
 
+            // submit handler
+            $(document).on("click", ".submit", (e) =>{
+                // recuperiamo il modello costruito all'interno del form
+                var user = form.GetModel();
 
-                });
-        })
+                // a questo punto si potrebbe, ad esempio, chiamare un'API per scrivere a db l'utente creato.
+                // per questoesame, sarà sufficiente stampare in console l'utente creato
+                console.log(user);
+            });
+        });
     </script>
 </body>
 
