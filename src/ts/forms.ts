@@ -87,7 +87,14 @@ export class Register{
         });
     }
 
-    private _addTableRow(table:string, append:boolean, values:any[]) {
+    /**
+     * Aggiunge una riga ad una tabella
+     * 
+     * @param table il name della propietà nel modello
+     * @param append determina se aggiungere la riga oppure svuotare la tabella e aggiungere la riga
+     * @param values una collezione di valori che verrano mostrati a schermo
+     */
+    private _addTableRow(table:string, append:boolean, values:any[]): void {
         var tbody = $("#" + table + "-table tbody");
         var tr = $("<tr />");
         $.each(values, (i, val) => {
