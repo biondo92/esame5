@@ -11,7 +11,7 @@ declare var $: any;
 /**
  * Questa classe contiene la logica che gestisce il form di registrazione
  */
-export class Register{
+export class Register {
     private _accountForm: Form<Account>;
     private _personalDataForm: Form<PersonalData>;
     private _addressForm: Form<Address>;
@@ -23,50 +23,50 @@ export class Register{
     /**
      * 
      */
-    constructor(selector:string, validation:any = {}) {
+    constructor(selector: string, validation: any = {}) {
         let parent = $(selector);
         let forms = parent.find("form");
         this._tabs = [];
         this._steps = {};
 
-        $.each(forms, (i, frm)=>{
-            this._tabs.push({ name: frm.id, tab: new bootstrap.Tab($("#"+ frm.id + "-tab-trigger")) });
+        $.each(forms, (i, frm) => {
+            this._tabs.push({ name: frm.id, tab: new bootstrap.Tab($("#" + frm.id + "-tab-trigger")) });
             this._steps[frm.id] = {};
 
             let validator = validation[frm.id];
-            if(frm.id == "account"){
+            if (frm.id == "account") {
                 this._accountForm = new Form<Account>("#" + frm.id, validator);
             }
-            if(frm.id == "personalData"){
+            if (frm.id == "personalData") {
                 this._personalDataForm = new Form<PersonalData>("#" + frm.id, validator);
             }
-            if(frm.id == "addresses"){
+            if (frm.id == "addresses") {
                 this._addressForm = new Form<Address>("#" + frm.id, validator);
             }
-            if(frm.id == "contacts"){
+            if (frm.id == "contacts") {
                 this._contactForm = new Form<Contact>("#" + frm.id, validator);
             }
         });
 
-        $(document).on("click", ".next", (e) =>{
+        $(document).on("click", ".next", (e) => {
             var target = $(e.target);
             this._tabs.filter((tab) => tab.name == target.data("next"))[0].tab.show();
         });
 
-        $(document).on("click", ".prev", (e) =>{
+        $(document).on("click", ".prev", (e) => {
             var target = $(e.target);
             this._tabs.filter((tab) => tab.name == target.data("prev"))[0].tab.show();
         });
 
-        $(document).on("click", ".add-data", (e) =>{
+        $(document).on("click", ".add-data", (e) => {
             var target = $(e.target);
             var frm = target.data("form");
             var index = this._model[frm].length;
 
-            if(frm == "addresses"){
+            if (frm == "addresses") {
                 var address = this._addressForm.GetModel();
                 this._model[frm][index] = address;
-                this._addTableRow(frm, index > 0, [
+                this._addTableRow(frm, index > 0, index, [
                     address.type,
                     address.address,
                     address.city,
@@ -74,10 +74,10 @@ export class Register{
                 ]);
             }
 
-            if(frm == "contacts"){
+            if (frm == "contacts") {
                 var contact = this._contactForm.GetModel();
                 this._model[frm][index] = contact;
-                this._addTableRow(frm, index > 0, [
+                this._addTableRow(frm, index > 0, index, [
                     contact.type,
                     contact.value
                 ]);
@@ -85,6 +85,16 @@ export class Register{
 
             target.parent().find('[data-bs-dismiss="modal"]').trigger("click");
         });
+
+        $(document).on("click", ".delete", (e) => {
+            var target = $(e.target);
+            var row = target.parent().parent();
+            var rowId = row.data("id");
+            var model = row.data("model");
+            var ele = this._model[model][rowId];
+            this._model[model] = this._model[model].filter(item => item != ele);
+            row.remove();
+        })
     }
 
     /**
@@ -94,17 +104,31 @@ export class Register{
      * @param append determina se aggiungere la riga oppure svuotare la tabella e aggiungere la riga
      * @param values una collezione di valori che verrano mostrati a schermo
      */
-    private _addTableRow(table:string, append:boolean, values:any[]): void {
+    private _addTableRow(table: string, append: boolean, id: number, values: any[]): void {
         var tbody = $("#" + table + "-table tbody");
         var tr = $("<tr />");
+        tr.data("id", id);
+        tr.data("model", table);
         $.each(values, (i, val) => {
             tr.append($("<td/>", {
                 text: val
             }));
         });
-        if(append){
+        var td = $("<td/>");
+        var icon = $("<i/>", {
+            class: "fas fa-trash pointer-events-none"
+        });
+        var btn = $("<button/>", {
+            class: "btn btn-danger delete"
+        });
+
+        btn.append(icon);
+        td.append(btn);
+
+        tr.append(td);
+        if (append) {
             tbody.append(tr);
-        }else{
+        } else {
             tbody.html("").append(tr);
         }
     }
@@ -113,7 +137,7 @@ export class Register{
      * Questo metoodo restituisce il modello di tipo 'User' che rappresenta l'utente che si sta creando
      * @returns User
      */
-    public GetModel() : User {
+    public GetModel(): User {
         this._model.account = this._accountForm.GetModel();
         this._model.personalData = this._personalDataForm.GetModel()
         return this._model;
@@ -150,7 +174,7 @@ class Form<T> {
             }
             else {
                 this._fieldsToValidate = this._fieldsToValidate || {};
-                this._fieldsToValidate[name] = {valid: false };
+                this._fieldsToValidate[name] = { valid: false };
 
                 elem.onblur = (e) => {
                     var target = $(e.target);
@@ -176,26 +200,26 @@ class Form<T> {
         });
     }
 
-    private Check(step:string) {
+    private Check(step: string) {
         var isFilled = true;
         var current = this._fieldsToValidate;
-        Object.keys(current).forEach(function(key) {
+        Object.keys(current).forEach(function (key) {
             isFilled = current[key].valid;
         });
 
-        if(isFilled){
-            $("#"+ step + " .next").removeClass("disabled");
-            $("."+ step + ".add-data").removeClass("disabled");
-            $("[data-require=\""+ step + "\"]").removeClass("disabled");
+        if (isFilled) {
+            $("#" + step + " .next").removeClass("disabled");
+            $("." + step + ".add-data").removeClass("disabled");
+            $("[data-require=\"" + step + "\"]").removeClass("disabled");
         }
-        else{
-            $("#"+ step + " .next").addClass("disabled");
-            $("."+ step + ".add-data").addClass("disabled");
-            $("[data-require=\""+ step + "\"]").addClass("disabled");
+        else {
+            $("#" + step + " .next").addClass("disabled");
+            $("." + step + ".add-data").addClass("disabled");
+            $("[data-require=\"" + step + "\"]").addClass("disabled");
         }
     }
 
-    public GetModel() : T {
+    public GetModel(): T {
         return this._model;
     }
 }
