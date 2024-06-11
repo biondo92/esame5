@@ -182,12 +182,15 @@ class Form<T> {
         Object.keys(current).forEach(function(key) {
             isFilled = current[key].valid;
         });
+
         if(isFilled){
             $("#"+ step + " .next").removeClass("disabled");
+            $("."+ step + ".add-data").removeClass("disabled");
             $("[data-require=\""+ step + "\"]").removeClass("disabled");
         }
         else{
             $("#"+ step + " .next").addClass("disabled");
+            $("."+ step + ".add-data").addClass("disabled");
             $("[data-require=\""+ step + "\"]").addClass("disabled");
         }
     }

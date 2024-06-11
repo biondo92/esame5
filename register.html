@@ -14,8 +14,11 @@
             margin-top: 10%;
         }
 
-        i {
+        /* i {
             z-index: -10000;
+        } */
+        .pointer-events-none{
+            pointer-events: none;
         }
     </style>
 </head>
@@ -82,19 +85,19 @@
                                         <form id="account">
                                             <div id="email" class="row mb-3">
                                                 <label for="input-email" class="form-label ">Email</label>
-                                                <input type="email" class="form-control" id="input-email" name="email">
+                                                <input type="email" class="form-control ms-2" id="input-email" name="email">
                                                 <div class="form-text text-danger"></div>
                                             </div>
                                             <div id="password" class="row mb-3">
                                                 <label for="input-password" class="form-label ">Password</label>
-                                                <input type="password" class="form-control" id="input-password"
+                                                <input type="password" class="form-control ms-2" id="input-password"
                                                     name="password">
                                                 <div class="form-text text-danger"></div>
                                             </div>
                                             <div id="confirm-password" class="row mb-3">
                                                 <label for="input-confirm-password" class="form-label ">Confirm
                                                     Password</label>
-                                                <input type="password" class="form-control" name="confirm-password"
+                                                <input type="password" class="form-control ms-2" name="confirm-password"
                                                     id="input-confirm-password">
                                                 <div class="form-text text-danger"></div>
                                             </div>
@@ -103,7 +106,7 @@
                                                 <button type="button"
                                                     class="btn btn-primary next disabled col-2 ms-auto"
                                                     data-next="personalData"><i
-                                                        class="fas fa-2x fa-arrow-circle-right"></i></button>
+                                                        class="fas fa-2x fa-arrow-circle-right pointer-events-none"></i></button>
                                             </div>
                                         </form>
                                     </div>
@@ -119,24 +122,24 @@
                                         <form id="personalData">
                                             <div id="name" class="row mb-3">
                                                 <label for="input-name" class="form-label">Name</label>
-                                                <input type="text" class="form-control" id="input-name" name="name">
+                                                <input type="text" class="form-control ms-2" id="input-name" name="name">
                                                 <div class="form-text text-danger"></div>
                                             </div>
                                             <div id="last-name" class="row mb-3">
                                                 <label for="input-last-name" class="form-label">Last Name</label>
-                                                <input type="text" class="form-control" id="input-last-name"
+                                                <input type="text" class="form-control ms-2" id="input-last-name"
                                                     name="lastName">
                                                 <div class="form-text text-danger"></div>
                                             </div>
                                             <div id="birthdate" class="row mb-3">
                                                 <label for="input-birthdate" class="form-label">Birthdate</label>
-                                                <input type="date" class="form-control" id="input-birthdate"
+                                                <input type="date" class="form-control ms-2" id="input-birthdate"
                                                     name="birthdate">
                                                 <div class="form-text text-danger"></div>
                                             </div>
                                             <div id="gender" class="row mb-3">
                                                 <label for="input-gender" class="form-label">Gender</label>
-                                                <select class="form-control" id="input-gender" name="gender">
+                                                <select class="form-control ms-2" id="input-gender" name="gender">
                                                     <option value="">Choose...</option>
                                                     <option value="M">Male</option>
                                                     <option value="F">Female</option>
@@ -148,11 +151,11 @@
                                             <div id="" class="row mb-3">
                                                 <button type="button" class="btn btn-primary prev col-2 me-auto"
                                                     data-prev="account"><i
-                                                        class="fas fa-2x fa-arrow-circle-left"></i></button>
+                                                        class="fas fa-2x fa-arrow-circle-left pointer-events-none"></i></button>
                                                 <button type="button"
                                                     class="btn btn-primary next disabled col-2 ms-auto"
                                                     data-next="addresses"><i
-                                                        class="fas fa-2x fa-arrow-circle-right"></i></button>
+                                                        class="fas fa-2x fa-arrow-circle-right pointer-events-none"></i></button>
                                             </div>
                                         </form>
                                     </div>
@@ -169,7 +172,7 @@
                                             <div class="col">
                                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                                     data-bs-target="#modal-address">
-                                                    <i class="fas fa-2x fa-plus text-white"></i>
+                                                    <i class="fas fa-2x fa-plus text-white pointer-events-none"></i>
                                                 </button>
 
                                             </div>
@@ -204,10 +207,10 @@
                                         <div id="" class="row mb-3">
                                             <button type="button" class="btn btn-primary prev col-2 me-auto"
                                                 data-prev="personalData"><i
-                                                    class="fas fa-2x fa-arrow-circle-left"></i></button>
+                                                    class="fas fa-2x fa-arrow-circle-left pointer-events-none"></i></button>
                                             <button type="button" class="btn btn-primary next col-2 ms-auto"
                                                 data-next="contacts"><i
-                                                    class="fas fa-2x fa-arrow-circle-right"></i></button>
+                                                    class="fas fa-2x fa-arrow-circle-right pointer-events-none"></i></button>
                                         </div>
 
                                         <div id="modal-address" class="modal" tabindex="-1">
@@ -221,17 +224,17 @@
                                                     <div class="modal-body">
 
                                                         <form id="addresses">
-                                                            <div id="address" class="row mb-3">
+                                                            <div id="address" class="row mb-3 p-3">
                                                                 <label for="input-address"
-                                                                    class="form-label ">Address</label>
+                                                                    class="form-label p-0">Address</label>
 
                                                                 <input type="text" class="form-control"
                                                                     id="input-address" name="address">
                                                                 <div class="form-text text-danger"></div>
 
                                                             </div>
-                                                            <div id="postalCode" class="row mb-3">
-                                                                <label for="input-postalCode" class="form-label ">Postal
+                                                            <div id="postalCode" class="row mb-3 p-3">
+                                                                <label for="input-postalCode" class="form-label p-0">Postal
                                                                     Code</label>
 
                                                                 <input type="text" class="form-control"
@@ -239,8 +242,8 @@
                                                                 <div class="form-text text-danger"></div>
 
                                                             </div>
-                                                            <div id="type" class="row mb-3">
-                                                                <label for="input-tipy" class="form-label ">Type</label>
+                                                            <div id="type" class="row mb-3 p-3">
+                                                                <label for="input-tipy" class="form-label p-0">Type</label>
 
                                                                 <select class="form-control" id="input-type"
                                                                     name="type">
@@ -251,8 +254,8 @@
                                                                 <div class="form-text text-danger"></div>
 
                                                             </div>
-                                                            <div id="city" class="row mb-3">
-                                                                <label for="input-city" class="form-label ">City</label>
+                                                            <div id="city" class="row mb-3 p-3">
+                                                                <label for="input-city" class="form-label p-0">City</label>
 
                                                                 <input type="text" class="form-control" id="input-city"
                                                                     name="city">
@@ -264,7 +267,7 @@
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"
                                                             data-bs-dismiss="modal">Close</button>
-                                                        <button type="button" class="btn btn-success add-data"
+                                                        <button type="button" class="btn btn-success addresses add-data disabled"
                                                             data-form="addresses">Add</button>
                                                     </div>
                                                 </div>
@@ -285,7 +288,7 @@
                                             <div class="col">
                                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                                     data-bs-target="#modal-contact">
-                                                    <i class="fas fa-2x fa-plus text-white"></i>
+                                                    <i class="fas fa-2x fa-plus text-white pointer-events-none"></i>
                                                 </button>
                                             </div>
                                         </div>
@@ -316,9 +319,9 @@
                                         <div id="" class="row mb-3">
                                             <button type="button" class="btn btn-primary prev col-2 me-auto"
                                                 data-prev="addresses"><i
-                                                    class="fas fa-2x fa-arrow-circle-left"></i></button>
+                                                    class="fas fa-2x fa-arrow-circle-left pointer-events-none"></i></button>
                                             <button type="button" class="btn btn-success submit col-2 ms-auto"><i
-                                                    class="fas fa-2x fa-save"></i></button>
+                                                    class="fas fa-2x fa-save pointer-events-none"></i></button>
                                         </div>
 
                                         <div id="modal-contact" class="modal" tabindex="-1">
@@ -332,17 +335,17 @@
                                                     <div class="modal-body">
                                                         <form id="contacts">
 
-                                                            <div id="value" class="row mb-3">
+                                                            <div id="value" class="row mb-3 p-3">
                                                                 <label for="input-value"
-                                                                    class="form-label ">Value</label>
+                                                                    class="form-label p-0">Value</label>
 
                                                                 <input type="text" class="form-control" id="input-value"
                                                                     name="value">
                                                                 <div class="form-text text-danger"></div>
 
                                                             </div>
-                                                            <div id="type" class="row mb-3">
-                                                                <label for="input-tipy" class="form-label ">Type</label>
+                                                            <div id="type" class="row mb-3 p-3">
+                                                                <label for="input-tipy" class="form-label p-0">Type</label>
 
                                                                 <select class="form-control" id="input-type"
                                                                     name="type">
@@ -361,7 +364,7 @@
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"
                                                             data-bs-dismiss="modal">Close</button>
-                                                        <button type="button" class="btn btn-success add-data"
+                                                        <button type="button" class="btn btn-success contacts add-data disabled"
                                                             data-form="contacts">Add</button>
                                                     </div>
                                                 </div>
@@ -530,8 +533,6 @@
                             return new window.App.Models.ValidationResult(true)
                         }
                     }
-
-
                 });
 
                 // submit handler
@@ -542,6 +543,12 @@
                     // a questo punto si potrebbe, ad esempio, chiamare un'API per scrivere a db l'utente creato.
                     // per questo esame, sarà sufficiente stampare in console l'utente creato
                     console.log(user);
+
+                    alert("Utente creato con successo!");
+                    var str = JSON.stringify(user, null, 2);
+                    $("#user-frm").html($("<pre/>", {
+                        text: str
+                    }));
                 });
             });
         </script>
