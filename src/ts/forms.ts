@@ -21,7 +21,7 @@ export class Register {
     private _model: User = new User();
 
     /**
-     * 
+     * Dato un selettore ed eventuali regole di validazione costruisce la logica che gestisce la creazione dell'utente
      */
     constructor(selector: string, validation: any = {}) {
         let parent = $(selector);
@@ -29,6 +29,7 @@ export class Register {
         this._tabs = [];
         this._steps = {};
 
+        // Cicla tutti i form presenti allìinterno del selettore, crea un'istanza della Tab che contiene quel form ed istanzia un hendler per il form specifico 
         $.each(forms, (i, frm) => {
             this._tabs.push({ name: frm.id, tab: new bootstrap.Tab($("#" + frm.id + "-tab-trigger")) });
             this._steps[frm.id] = {};
@@ -48,16 +49,17 @@ export class Register {
             }
         });
 
+        //Gestisce il click sui tasti che hanno classe next, recupera il tasto sul quale l'utente ha cliccato, da questo recupera l'informazione sullo step successivo dopo di che attreverso Boostrap mostra la tab relativa
         $(document).on("click", ".next", (e) => {
             var target = $(e.target);
             this._tabs.filter((tab) => tab.name == target.data("next"))[0].tab.show();
         });
-
+        //come sopra, gestisce il click sui tasti che hanno classe prev, recupera il tasto sul quale l'utente ha cliccato, da questo recupera l'informazione sullo step precedente dopo di che attreverso Boostrap mostra la tab relativa
         $(document).on("click", ".prev", (e) => {
             var target = $(e.target);
             this._tabs.filter((tab) => tab.name == target.data("prev"))[0].tab.show();
         });
-
+        // Gestisce il click sui bottoni con class add-data contenuti all'interno dei modal, recupera il tasto su cui l'utente ha cliccato, su questo tasto ci sono infomazioni relative alla proprietà del modello che si sta aggiungendo
         $(document).on("click", ".add-data", (e) => {
             var target = $(e.target);
             var frm = target.data("form");
@@ -85,7 +87,7 @@ export class Register {
 
             target.parent().find('[data-bs-dismiss="modal"]').trigger("click");
         });
-
+        //Gestisce il click sui bottoni con class delete contenuti all'interno di una tabella, elimina la riga e rimuove l'oggetto dal modello
         $(document).on("click", ".delete", (e) => {
             var target = $(e.target);
             var row = target.parent().parent();
@@ -103,6 +105,7 @@ export class Register {
      * @param table il name della propietà nel modello
      * @param append determina se aggiungere la riga oppure svuotare la tabella e aggiungere la riga
      * @param values una collezione di valori che verrano mostrati a schermo
+     * questo medoto generico data una tabella di destinazione permette di aggiungere una nuova riga con le colonne passate in input
      */
     private _addTableRow(table: string, append: boolean, id: number, values: any[]): void {
         var tbody = $("#" + table + "-table tbody");
@@ -136,6 +139,7 @@ export class Register {
     /**
      * Questo metoodo restituisce il modello di tipo 'User' che rappresenta l'utente che si sta creando
      * @returns User
+     * restituisce il modello 
      */
     public GetModel(): User {
         this._model.account = this._accountForm.GetModel();
@@ -152,7 +156,8 @@ class Form<T> {
     private _fieldsToValidate: IDictionary = {};
 
     /**
-     *
+     * dato il selettore di un form, e le validazioni richieste per quel form, recupera tutti i campi contenuti nel form ed applica ad ognuno la relativa validazione se presente
+     * inoltre si occupa di valorizzare il modello al cambiamento dell input
      */
     constructor(selector: string = "form", validators: any = {}) {
         let el = $(selector);
@@ -199,7 +204,7 @@ class Form<T> {
             this._fields.push({ name: name, element: elem });
         });
     }
-
+    //questo metodo verifica se tutti i campi obbloigatori per un dato form sono compilati, in caso positivo abilita lo step successivo in caso contrario lo disabilita
     private Check(step: string) {
         var isFilled = true;
         var current = this._fieldsToValidate;
@@ -218,7 +223,7 @@ class Form<T> {
             $("[data-require=\"" + step + "\"]").addClass("disabled");
         }
     }
-
+    //restituisce il modello del form
     public GetModel(): T {
         return this._model;
     }
