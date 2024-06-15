@@ -204,7 +204,7 @@ class Form<T> {
             this._fields.push({ name: name, element: elem });
         });
     }
-    //questo metodo verifica se tutti i campi obbloigatori per un dato form sono compilati, in caso positivo abilita lo step successivo in caso contrario lo disabilita
+    //questo metodo verifica se tutti i campi obbligatori per un dato form sono compilati, in caso positivo abilita lo step successivo in caso contrario lo disabilita
     private Check(step: string) {
         var isFilled = true;
         var current = this._fieldsToValidate;
