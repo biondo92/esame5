@@ -473,7 +473,7 @@
                             if (val.length <= 0) {
                                 return new window.App.Models.ValidationResult(false, "Il campo 'postaCode' è obbligatorio");
                             }
-                            if (val.length == 5) {
+                            if (val.length != 5) {
                                 return new window.App.Models.ValidationResult(false, "Il campo 'postalCode' deve avere una lunghezza di 5 caratteri");
                             }
                             var reg = /^\d+$/;
